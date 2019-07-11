@@ -1,0 +1,142 @@
+==========================通用破解框架 General Crack Framework 脚本编写文档========================
+
+General Crack Framework(x86) ver1.0 code by DBinary
+
+通用破解框架(General Crack Framework) 是一款由StoryScript脚本语言及StoryVM虚拟机控制的破解框架,旨在通过脚本加载实现一键破解32位的exe程序
+
+StoryScript的使用请自行参照StoryScript帮助文档
+
+====================================API 调用==================================
+
+-host int API_RUN(string dll,string procName);
+执行DLL函数,其中参数dll表示dll路径,procName表示函数名,如果调用失败返回0
+
+-host int API_PARAMS(int n);
+设置下一个API Call的参数数目,n为参数数目
+
+-host int API_PARAM_BYTE(int n,int _byte);
+设置下一个API Call参数的值,其中,n表示第几个参数(n从0开始),byte表示设置的字节值
+
+-host int API_PARAM_WORD(int n,int _word);
+设置下一个API Call参数的值,其中,n表示第几个参数(n从0开始),_word表示设置的字值
+
+-host int API_PARAM_DWORD(int n,int _dword);
+设置下一个API Call参数的值,其中,n表示第几个参数(n从0开始),byte表示设置的字节值
+
+-host int API_PARAM_STRING(int n,string str);
+设置下一个API Call参数的值,其中,n表示第几个参数(n从0开始),string表示一个字符串指针
+
+-host int API_PARAM_MEMORY(int n,memory mem,int size);
+设置下一个API Call参数的值,其中,n表示第几个参数(n从0开始),mem表示一个内存指针,size为这个内存的大小
+
+-host int API_GET_PARAM_BYTE(int n);
+取得参数表中,索引为n的一个字节值
+
+-host int API_GET_PARAM_WORD(int n);
+取得参数表中,索引为n的一个字值
+
+-host int API_GET_PARAM_DWORD(int n);
+取得参数表中,索引为n的一个双字值
+
+-host string API_GET_PARAM_STRING(int n);
+取得参数表中,索引为n的字符串
+
+-host memory API_GET_PARAM_MEMORY(int n,int size);
+取得参数表中,索引为n的一个内存值
+
+==================================TRIGGER============================================
+-host int TRIGGER_BREAKPOINT(int BreakAddr,int codeAddr,int size,string call_back);
+部署断点触发器代码,breakAddr表示断点的地址位置,当程序执行到该位置时,将激活触发器执行call_back函数
+断点的位置必须是一个完整指令的开始,且该指令不能为相对地址指令(相对跳转)
+size为断点位置的指令长度,这个长度至少应该为5字节并且包含完整的指令
+codeAddr表示生成触发的跳转指令地址,如果实现API Hook的情况下,这个地址可以是函数开头的前5个字节(然后由API入口的前2字节进行一次短跳转跳至此处来实现一个安全的hook
+,这种方式将有助于绕过一些壳程序对API检测校验)
+在其它的时候,codeAddr可以和BreakAddr的地址相同
+call_back表示当触发地址的代码执行时,回调函数脚本的名称,这个回调函数必须是一个返回为void类型的无参函数
+
+-host int TRIGGER_BREAKPOINTEX(int BreakAddr,int codeAddr,int size,string call_back);
+与TRIGGER_BREAKPOINT功能相同,但跳转代码将以绝对跳转的方式进行,这意味着size至少需要7个字节,在一些具有代码节校验的加壳软件中,这种跳转方式并不被建议
+
+-host int TRIGGER_CANCEL(int BreakAddr);
+取消断点处的断点代码,注意,当这个函数写在回调函数中时,执行后不能再调用TRIGGER_BREAKPOINTEX或TRIGGER_BREAKPOINT
+
+-host int TRIGGER_SHELLCODE(int addr,memory shellcode)
+在触发断点为addr的触发函数部署shellcode,shellcode将会在触发函数执行后被执行,使用shellcode对代码进行额外的操作
+
+-host int TRIGGER_CURRENTSHELLCODE(memory shellcode)
+这个函数只能在触发回调函数中使用,其省略了触发地址参数,将直接修改对应触发地址的shellcode
+
+======================全局内存======================
+-host int MEMORY_ALLOC(memory init,int size)
+分配一个全局内存空间,并使用init进行初始化,size为分配空间,如果size不足以容纳初始化内存,则size不生效,如果init内存小于size,额外内存空间将以不确定方式分配,如果分配失败将返回0
+
+-host int MEMORY_FREE(int addr)
+释放分配的内存空间,对于不使用的内存应该尽快释放
+
+======================堆访问=======================
+host int MEMORY_READ_BYTE(int addr,int *val);
+读取一字节内存,如果成功返回非0值,读取地址为addr
+
+host int MEMORY_READ_WORD(int addr,int *val);
+读取一字内存,如果成功返回非0值,读取地址为addr
+
+host int MEMORY_READ_DWORD(int addr,int *val);
+读取一双字内存,如果成功返回非0值,读取地址为addr
+
+-host int MEMORY_READ(int addr,int size,memory *mem)
+读取内存,如果成功返回非0值,读取地址为addr,大小为size的一块内存空间,mem为输出指针
+
+host int MEMORY_WRITE_BYTE(int addr,int _val);
+写一字节内存,如果成功返回非0值,写地址为addr,大小为size的一块内存空间,_val为输入内存类型(由低到高地址取值)
+
+host int MEMORY_WRITE_WORD(int addr,int _val);
+写一字内存,如果成功返回非0值,写地址为addr,大小为size的一块内存空间,_val为输入内存类型(由低到高地址取值)
+
+host int MEMORY_WRITE_DWORD(int addr,int _val);
+写一双字内存,如果成功返回非0值,写地址为addr,大小为size的一块内存空间,_val为输入内存类型(由低到高地址取值)
+
+-host int MEMORY_WRITE(int addr,int size,memory mem)
+写内存,如果成功返回非0值,写地址为addr,大小为size的一块内存空间,mem为输入内存类型,如果size大于mem的内存,额外空间将以0补齐
+======================栈访问=======================
+
+-host int STACK_BYTE(int offset);
+取得堆栈偏移为offset的一个字节值
+
+-host int STACK_WORD(int offset);
+取得堆栈偏移为offset的一个字值
+
+-host int STACK_DWORD(int offset);
+取得堆栈偏移为offset的一个双字值
+
+-host int STACK_STRING(int offset,string *str);
+取得堆栈偏移为offset的内存指针所指向的字符串,如果成功返回非0值,str为输出指针
+
+-host int STACK_MEMORY(int offset,int size,memory *mem);
+取得堆栈偏移为offset的内存指针所指向的内存,,如果成功返回非0值,mem为输出指针
+
+host int STACK_SET_BYTE(int offset,int val);
+设置一字节栈值,offset表示偏移量,val为设定值
+
+host int STACK_SET_WORD(int offset,int val);
+设置一字栈值,offset表示偏移量,val为设定值
+
+host int STACK_SET_DWORD(int offset,int val);
+设置一双字栈值,offset表示偏移量,val为设定值
+
+===========================================内存映像==================================
+host int IMAGE_SEARCH(int startAddr,int EndAddr,memory match);
+
+==============================================控制====================================
+host void CONTROL_TERMINATE()
+结束程序
+
+==============================================文件系统==================================
+host int FILE_SAVE(string path,memory mem);
+保存mem内存指向的数据到文件,path为路径
+
+host int FILE_LOAD(string path,memory *mem,string path);
+读取path所指向路径的文件到mem
+
+=============================================外部传参===================================
+host int PARAM_GET(string name,string *data);
+取得外部传参数据,name为参数名,data为读取数据的字符串指针

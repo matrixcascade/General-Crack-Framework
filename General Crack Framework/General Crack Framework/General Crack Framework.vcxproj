@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9AB018F5-A7FE-4854-872F-4542CB1ED233}</ProjectGuid>
+    <RootNamespace>GeneralCrackFramework</RootNamespace>
+    <ProjectName>General Crack Framework Core</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\PainterEngine\Core\PX_AES.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_ANN.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_BaseGeo.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Bitmap.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_BpNeural.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Font.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Linker.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_List.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Log.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Memory.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_MemoryPool.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_ParallelCore.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Sound.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_String.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Surface.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Texture.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Timer.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_TRaw.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Typedef.c" />
+    <ClCompile Include="..\..\PainterEngine\Core\PX_Vector.c" />
+    <ClCompile Include="..\..\PainterEngine\Kernel\PX_Actor.c" />
+    <ClCompile Include="..\..\PainterEngine\Kernel\PX_Animation.c" />
+    <ClCompile Include="..\..\PainterEngine\Kernel\PX_Grammar.c" />
+    <ClCompile Include="..\..\PainterEngine\Kernel\PX_GUI_Object.c" />
+    <ClCompile Include="..\..\PainterEngine\Kernel\PX_Lexer.c" />
+    <ClCompile Include="..\..\PainterEngine\Kernel\PX_Partical.c" />
+    <ClCompile Include="..\..\PainterEngine\Kernel\PX_Script_ASMCompiler.c" />
+    <ClCompile Include="..\..\PainterEngine\Kernel\PX_Script_Interpreter.c" />
+    <ClCompile Include="..\..\PainterEngine\Kernel\PX_Script_VM.c" />
+    <ClCompile Include="..\..\PainterEngine\Kernel\PX_TransmissionProtocal.c" />
+    <ClCompile Include="GCF_VM.c" />
+    <ClCompile Include="ReflectiveDll.c" />
+    <ClCompile Include="ReflectiveLoader.c" />
+    <ClCompile Include="__Main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\PainterEngine\Core\PX_AES.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_ANN.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_BaseGeo.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Bitmap.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_BpNeural.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Core.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Font.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Linker.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_List.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Log.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_MathTable.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Memory.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_MemoryPool.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_ParallelCore.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Sound.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_String.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Surface.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Texture.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Timer.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_TRaw.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Typedef.h" />
+    <ClInclude Include="..\..\PainterEngine\Core\PX_Vector.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_2dxCommon.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_Actor.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_Animation.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_Grammar.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_GUI_Object.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_Kernel.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_Lexer.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_Partical.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_ScriptCore.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_Script_ASMCompiler.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_Script_Interpreter.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_Script_VM.h" />
+    <ClInclude Include="..\..\PainterEngine\Kernel\PX_TransmissionProtocal.h" />
+    <ClInclude Include="GCF_VM.h" />
+    <ClInclude Include="ReflectiveDLLInjection.h" />
+    <ClInclude Include="ReflectiveLoader.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

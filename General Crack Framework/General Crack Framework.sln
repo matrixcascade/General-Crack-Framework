@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "General Crack Framework GUI", "General Crack Framework GUI\General Crack Framework GUI.vcxproj", "{EC1BDC27-326F-4802-A65C-220168ACEF9B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test Target", "Test Target\Test Target.vcxproj", "{DC4540DD-FF49-4767-AA08-873D68218936}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "General Crack Framework Core", "General Crack Framework\General Crack Framework.vcxproj", "{9AB018F5-A7FE-4854-872F-4542CB1ED233}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC1BDC27-326F-4802-A65C-220168ACEF9B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EC1BDC27-326F-4802-A65C-220168ACEF9B}.Debug|Win32.Build.0 = Debug|Win32
+		{EC1BDC27-326F-4802-A65C-220168ACEF9B}.Release|Win32.ActiveCfg = Release|Win32
+		{EC1BDC27-326F-4802-A65C-220168ACEF9B}.Release|Win32.Build.0 = Release|Win32
+		{DC4540DD-FF49-4767-AA08-873D68218936}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DC4540DD-FF49-4767-AA08-873D68218936}.Debug|Win32.Build.0 = Debug|Win32
+		{DC4540DD-FF49-4767-AA08-873D68218936}.Release|Win32.ActiveCfg = Release|Win32
+		{DC4540DD-FF49-4767-AA08-873D68218936}.Release|Win32.Build.0 = Release|Win32
+		{9AB018F5-A7FE-4854-872F-4542CB1ED233}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9AB018F5-A7FE-4854-872F-4542CB1ED233}.Debug|Win32.Build.0 = Debug|Win32
+		{9AB018F5-A7FE-4854-872F-4542CB1ED233}.Release|Win32.ActiveCfg = Release|Win32
+		{9AB018F5-A7FE-4854-872F-4542CB1ED233}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

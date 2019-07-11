@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="GeneralCrackFrameworkGUI">
+    <file>Resources/ico.bmp</file>
+    <file>Resources/image.jpg</file>
+  </qresource>
+</RCC>
